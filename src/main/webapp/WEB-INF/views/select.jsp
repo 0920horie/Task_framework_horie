@@ -18,22 +18,23 @@
 	<c:if test="${not empty msg}">
 		<span class="required">${msg}</span>
 	</c:if>
-<form action="select">
+
+<form:form action="select" modelAttribute="select">
   <fieldset>
     <div>
-      <label>ID</label><input type="text" name="id" value="${chengeId }">
+      <label>ID</label><form:input path="id" value="${fn:escapeXml(id)}" /><form:errors path="id" cssStyle="color: red"/>
     </div>
     <div>
-      <label>名前</label><input type="text" name="name">
+      <label>名前</label><form:input path="name" />
     </div>
     <div>
-      <label>TEL</label><input type="text" name="tel">
+      <label>TEL</label><form:input path="tel" />
     </div>
   </fieldset>
-  <input type="submit" value="検索">
-</form>
+  <form:button>検索</form:button>
+</form:form>
 <div>
-  <a href="menu.jsp">メニューに戻る</a>
+  <a href="menu">メニューに戻る</a>
 </div>
 </body>
 </html>

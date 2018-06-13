@@ -1,31 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ログイン画面</title>
 <link href="css/commons.css" rel="stylesheet">
 </head>
 <body>
-<c:if test="${not empty msg}">
-		<p>${msg} </p>
-		</c:if>
-<form action="login" method="post">
-  <fieldset>
+<p> ${msg} </p>
+<form:form action="menu" modelAttribute="login">
     <div>
-      <label>ID</label><input type="text" name="id" value="${fn:escapeXml(param.id)}">
+      <label>ID</label><form:input path="id" /><form:errors path="id" cssStyle="color: red"/>
     </div>
     <div>
-      <label>PASS</label><input type="password" name="pass" value="${fn:escapeXml(param.pass)}">
+      <label>PASS</label><form:input path="pass" /><form:errors path="pass" cssStyle="color: red"/>
     </div>
-  </fieldset>
-  <input type="submit" value="ログイン">
-</form>
-<div>
-  <a href="index.jsp">TOP画面へ</a>
-</div>
+  	<form:button>ログイン</form:button>
+</form:form>
 </body>
 </html>
